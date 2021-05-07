@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Home from '../components/Home.js'
 import Instructions from '../components/Instructions.js'
-import Game from '../components/Game.js'
+import GameContainer from '../containers/GameContainer.js'
 import HighScore from '../components/HighScore.js'
 import EndScreen from '../components/EndScreen.js'
 import Credits from '../components/Credits.js'
@@ -23,7 +23,7 @@ class MainContainer extends Component {
         <h1>Main Container</h1>
         <Home />
         <Instructions />
-        <Game />
+        <GameContainer />
         <HighScore handleScoreSubmit={this.handleScoreSubmit}/>
         <EndScreen />
         <Credits />
