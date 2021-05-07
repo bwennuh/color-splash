@@ -14,18 +14,16 @@ class Home extends Component {
             <span style={{color: "green"}}>o</span>
             <span style={{color: "purple"}}>r </span>
 
-            <span style={{color: "orange"}}>S</span>
-            <span style={{color: "blue"}}>p</span>
+            <span style={{color: "blue"}}>S</span>
+            <span style={{color: "orange"}}>p</span>
             <span style={{color: "green"}}>l</span>
             <span style={{color: "red"}}>a</span>
             <span style={{color: "purple"}}>s</span>
             <span style={{color: "green"}}>h</span>
           </div>
-            <button id="play-button">Click to Play</button>
-
+            <button id="play-button" className="rainbow-background">Click to Play</button>
 
         </div>
-
       </div>
     )
   }
