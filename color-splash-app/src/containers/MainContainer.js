@@ -10,7 +10,7 @@ class MainContainer extends Component {
   render(){
     return(
       <div>
-        <h1>Main Container</h1>
+        <h1>Main Container for Color Splash</h1>
         <Home />
         <Instructions />
         <Game />
