@@ -7,6 +7,16 @@ import EndScreen from '../components/EndScreen.js'
 import Credits from '../components/Credits.js'
 
 class MainContainer extends Component {
+
+  handleScoreSubmit = (event) => {
+    event.preventDefault()
+    const input = event.target.children[0]
+    // User's nickname
+    console.log(input.value)
+    // Reset field
+    input.value = ""
+  }
+
   render(){
     return(
       <div>
@@ -14,7 +24,7 @@ class MainContainer extends Component {
         <Home />
         <Instructions />
         <Game />
-        <HighScore />
+        <HighScore handleScoreSubmit={this.handleScoreSubmit}/>
         <EndScreen />
         <Credits />
       </div>
