@@ -27,4 +27,28 @@
 #play-button {
   font-size: 16pt;
   font-weight: 500;
+  font-family: "Arial Black", sans-serif;
+  text-align: center;
+  letter-spacing: 2px;
+  color: black;
+  display: flex auto;
+
+  background-size: 200% auto;
+  width: 250px;
+  border-radius: 25px;
+  border-width: 5px;
+  padding: 15px;
+  margin: 10px;
+
+  cursor: pointer;
 }
+
+#play-button:hover{
+  background-position: right center; 
+  color: white;
+}
+
+.rainbow-background {
+  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+}
+
