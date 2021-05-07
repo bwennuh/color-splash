@@ -12,7 +12,7 @@ class Game extends Component {
   
   generateMatrix = () => {
     let initialArray = this.reverseArray()
-    const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='d-flex flex-column'>Row{this.generateRow(row)}</div>)
+    const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>Row{this.generateRow(row)}</div>)
     // console.log(matrix)
     return matrix
   }
@@ -25,8 +25,7 @@ class Game extends Component {
 
   render(){
     return(
-      <div>
-        <h1>Game</h1>
+      <div style={{width: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
         <div id='matrix' style={{textAlign: 'center'}}>
           {this.generateMatrix()}
         </div>
