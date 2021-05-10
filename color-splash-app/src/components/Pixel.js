@@ -15,12 +15,14 @@ class Pixel extends Component {
         console.log(startPixel)
 
         startPixel.style.backgroundColor = this.state.color
+        //method
 
     }
 
     render() {
         return (
-            <div id={this.props.id}
+            <div 
+            id={this.props.id}
             style={{width: '72px', height: '72px', padding: '0px', backgroundColor: this.state.color}} 
             className="col text-dark border"
             onClick={this.handleClick}
