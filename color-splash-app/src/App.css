@@ -18,10 +18,12 @@
 }
 
 #color-splash {
-  font-size: 30pt;
+  font-size: 48pt;
   font-weight: 900;
   letter-spacing: 3px;
-  padding: 10px
+  padding: 10px;
+  font-family: "Arial Black", sans-serif;
+  letter-spacing: 3px;
 }
 
 #play-button {
@@ -49,6 +51,16 @@
 }
 
 .rainbow-background {
-  background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+  /* background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); */
+  background-image: linear-gradient(to left, #1b4668, #5A809E, #6CC2BD, #FEE4C4, #FFC1A6, #F57D7C)
+}
+
+.instruction-list{
+  text-align: left;
+  padding-left: 100px;
+  font-size: 12pt;
+  font-weight: 500;
+  font-family: "Arial Black", sans-serif;
+  letter-spacing: 1px;
 }
 
