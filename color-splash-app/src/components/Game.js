@@ -7,7 +7,7 @@ const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#F
 class Game extends Component {
 
   state = {
-    rowsCols: 5,
+    rowsCols: 4,
     pixelColorNumbers: [],
     pixelLocations: [],
     splashPixels: [],
@@ -15,10 +15,16 @@ class Game extends Component {
   }
 
   createArray = () => {
-    let rowArray = new Array(this.state.rowsCols).fill(new Array(this.state.rowsCols).fill(0))
-    // console.log(rowArray)
-    let testArray = new Array(this.state.rowsCols).fill().map((element,index)=> new Array(this.state.rowsCols).fill(new Array(2).fill(index).map((element, index, array) => index)))
+    // initialize array
+    let testArray = new Array(this.state.rowsCols).fill().map((element,index)=> {
+      return new Array(this.state.rowsCols).fill(0)
+    })
+    // fill out array
+    const n = this.state.rowsCols
+    testArray.map((elem,idx)=>testArray[idx]=testArray[idx].fill(idx).map((elem,ind,arr) => (n-1-arr[0])+" "+ind))
     console.log(testArray)
+    
+    this.setState({pixelLocations: testArray})
   }
 
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
@@ -53,6 +59,10 @@ class Game extends Component {
   getRandomColor = (num) => {
       let randomColor = colorPalette[this.getRandomInt(0,6)]
       return randomColor
+  }
+
+  componentDidMount() {
+    this.createArray()
   }
 
   render(){
