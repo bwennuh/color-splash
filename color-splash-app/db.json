@@ -1,0 +1,25 @@
+{
+  "highscores": [
+    {
+      "id": 1,
+      "playerName": "Brenna",
+      "score": 100,
+      "clickCount": 25,
+      "finalColor": "red"
+    },
+    {
+      "id": 2,
+      "playerName": "James",
+      "score": 100,
+      "clickCount": 25,
+      "finalColor": "green"
+    },
+    {
+      "id": 3,
+      "playerName": "Bob",
+      "score": 75,
+      "clickCount": 28,
+      "finalColor": "yellow"
+    }
+  ]
+}
