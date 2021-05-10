@@ -7,13 +7,15 @@ const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#F
 class Game extends Component {
 
   state = {
-    rowsCols: 4,
+    rowsCols: 3,
     pixelColorNumbers: [],
     pixelLocations: [],
     splashPixels: [],
-    splashColor: ''
+    splashColor: '',
+    pixels: []
   }
 
+  // Make intial location array in state
   createArray = () => {
     // initialize array
     let testArray = new Array(this.state.rowsCols).fill().map((element,index)=> {
@@ -21,10 +23,15 @@ class Game extends Component {
     })
     // fill out array
     const n = this.state.rowsCols
-    testArray.map((elem,idx)=>testArray[idx]=testArray[idx].fill(idx).map((elem,ind,arr) => (n-1-arr[0])+" "+ind))
-    console.log(testArray)
-    
+    testArray.map((elem,idx)=>testArray[idx]=testArray[idx].fill(idx).map((elem,ind,arr) => (ind+" "+(n-1-arr[0]))))
+    // Update our state to reflect intitial values
     this.setState({pixelLocations: testArray})
+  }
+
+  createPixelsHolder = () => {
+    const pixels = this.generateMatrix()
+    console.log(pixels)
+    this.setState({ pixels })
   }
 
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
@@ -41,9 +48,9 @@ class Game extends Component {
     let initialArray = this.initializeArray()
     const row = initialArray.map((elem, idx) => {
       if (idx === 0 && rowNum === 0){
-        return <Pixel id="start-pixel" idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
+        return <Pixel id="start-pixel" key={idx+", "+rowNum} idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
       } else {
-        return <Pixel idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
+        return <Pixel key={idx+", "+rowNum} idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
       }
     })
     return row
@@ -63,13 +70,14 @@ class Game extends Component {
 
   componentDidMount() {
     this.createArray()
+    this.createPixelsHolder()
   }
 
   render(){
     return(
       <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
-        <div id='matrix' style={{textAlign: 'center'}} onClick={this.createArray}>
-          {this.generateMatrix()}
+        <div id='matrix' style={{textAlign: 'center'}}>
+          {this.state.pixels.map(element => element) /* printing all pixels */}
         </div>
       </div>
     )
