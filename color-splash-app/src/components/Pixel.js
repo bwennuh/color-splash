@@ -9,23 +9,13 @@ class Pixel extends Component {
         isSplash: false
     }
 
-    handleClick = (event) => {
-        console.log(this.state.color)
-        const startPixel = document.querySelector("#start-pixel")
-        console.log(startPixel)
-
-        startPixel.style.backgroundColor = this.state.color
-        //method
-
-    }
-
     render() {
         return (
             <div 
             id={this.props.id}
             style={{width: '72px', height: '72px', padding: '0px', backgroundColor: this.state.color}} 
             className="col text-dark border"
-            onClick={this.handleClick}
+            onClick={(event) => this.props.handlePixelClick(event)}
             >
             </div>
         )
