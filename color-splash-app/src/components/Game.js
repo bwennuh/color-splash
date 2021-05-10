@@ -7,7 +7,7 @@ const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#F
 class Game extends Component {
 
   state = {
-    rowsCols: 3,
+    rowsCols: 4,
     pixelColorNumbers: [],
     pixelLocations: [],
     splashPixels: [],
@@ -28,10 +28,26 @@ class Game extends Component {
     this.setState({pixelLocations: testArray})
   }
 
+  // Add all pixels to state
   createPixelsHolder = () => {
     const pixels = this.generateMatrix()
     console.log(pixels)
     this.setState({ pixels })
+  }
+
+  setSplashColor = () => {
+    
+  }
+
+  handlePixelClick = (event) => {
+    const n = this.state.rowsCols
+    const x = n-1-event.target.id.split(", ")[0]
+    const y = event.target.id.split(", ")[1]
+
+    // if click not 0,0 change 0,0's color to match, and set state
+    if(x+y>0) {
+      // Set 0,0 color to selected color
+    }
   }
 
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
@@ -47,11 +63,15 @@ class Game extends Component {
   generateRow = (rowNum) => {
     let initialArray = this.initializeArray()
     const row = initialArray.map((elem, idx) => {
-      if (idx === 0 && rowNum === 0){
-        return <Pixel id="start-pixel" key={idx+", "+rowNum} idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
-      } else {
-        return <Pixel key={idx+", "+rowNum} idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
-      }
+      return <Pixel key={idx+", "+rowNum}
+                    id={idx+", "+rowNum}
+                    idx={idx} 
+                    row={rowNum} 
+                    color={this.getRandomColor()} 
+                    splashColor={this.state.splashColor}
+                    setSplashColor={this.setSplashColor}
+                    handlePixelClick={this.handlePixelClick}
+                    pixels={this.state.pixels}/>
     })
     return row
   }
@@ -70,10 +90,13 @@ class Game extends Component {
 
   componentDidMount() {
     this.createArray()
-    this.createPixelsHolder()
+    console.log(this.createPixelsHolder())
+    // print original block
   }
 
   render(){
+    if(this.state.pixels.length!==0)
+      console.log(this.state.pixels[3].props.children[0].props.color)
     return(
       <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
         <div id='matrix' style={{textAlign: 'center'}}>
@@ -85,3 +108,22 @@ class Game extends Component {
 }
 
 export default Game
+
+
+
+// const n = this.state.rowsCols
+//     const x = n-1-event.target.id.split(", ")[0]
+//     const y = event.target.id.split(", ")[1]
+
+//     // if click not 0,0 change 0,0's color to match, and set state
+//     if(x+y>0) {
+//       // Copying ... 
+//       let clone = Object.assign([], this.state.pixels)
+//       // Set 0,0 color to selected color
+//       clone[0+n-1].props.children[0].props.color = clone[x].props.children[y].props.color 
+//       console.log(clone)
+//       // this.setState(state => {
+//       //   state.pixels[0].props.children[0].props.color = 0
+//       //   return state
+//       // })
+//     }
