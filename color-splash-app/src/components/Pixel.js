@@ -1,16 +1,24 @@
 import React, { Component } from 'react';
 
-const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
-
 class Pixel extends Component {
 
     state = {
         x: this.props.idx,
-        y: this.props.row 
+        y: this.props.row, 
+        color: this.props.color,
+        splash: ''
+    }
+
+    makePixelGroup = () => {
+        
     }
 
     render() {
-        return <div style={{width: '8px', height: '20px'}} className="col text-dark bg-success border"></div>
+        console.log(this.props.color)
+        return (
+            <div style={{width: '36px', height: '36px', padding: '0px', backgroundColor: this.state.color}} className="col text-dark border">
+            </div>
+        )
     }
 }
 
