@@ -7,7 +7,18 @@ const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#F
 class Game extends Component {
 
   state = {
-    rowsCols: 12
+    rowsCols: 5,
+    pixelColorNumbers: [],
+    pixelLocations: [],
+    splashPixels: [],
+    splashColor: ''
+  }
+
+  createArray = () => {
+    let rowArray = new Array(this.state.rowsCols).fill(new Array(this.state.rowsCols).fill(0))
+    // console.log(rowArray)
+    let testArray = new Array(this.state.rowsCols).fill().map((element,index)=> new Array(this.state.rowsCols).fill(new Array(2).fill(index).map((element, index, array) => index)))
+    console.log(testArray)
   }
 
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
@@ -22,7 +33,13 @@ class Game extends Component {
 
   generateRow = (rowNum) => {
     let initialArray = this.initializeArray()
-    const row = initialArray.map((elem, idx) => <Pixel idx={idx} row={rowNum} color={this.getRandomColor()}/>)
+    const row = initialArray.map((elem, idx) => {
+      if (idx === 0 && rowNum === 0){
+        return <Pixel id="start-pixel" idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
+      } else {
+        return <Pixel idx={idx} row={rowNum} color={this.getRandomColor()} splashColor={this.state.splashColor}/>
+      }
+    })
     return row
   }
 
@@ -41,7 +58,7 @@ class Game extends Component {
   render(){
     return(
       <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
-        <div id='matrix' style={{textAlign: 'center'}}>
+        <div id='matrix' style={{textAlign: 'center'}} onClick={this.createArray}>
           {this.generateMatrix()}
         </div>
       </div>
