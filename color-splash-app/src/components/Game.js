@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Pixel from './Pixel'
 
 
-const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
+const colorPalette = ['#6CC2BD', '#1b4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
 
 class Game extends Component {
 
