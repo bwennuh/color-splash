@@ -6,17 +6,25 @@ class Pixel extends Component {
         x: this.props.idx,
         y: this.props.row, 
         color: this.props.color,
-        splash: ''
+        isSplash: false
     }
 
-    makePixelGroup = () => {
-        
+    handleClick = (event) => {
+        console.log(this.state.color)
+        const startPixel = document.querySelector("#start-pixel")
+        console.log(startPixel)
+
+        startPixel.style.backgroundColor = this.state.color
+
     }
 
     render() {
-        console.log(this.props.color)
         return (
-            <div style={{width: '36px', height: '36px', padding: '0px', backgroundColor: this.state.color}} className="col text-dark border">
+            <div id={this.props.id}
+            style={{width: '72px', height: '72px', padding: '0px', backgroundColor: this.state.color}} 
+            className="col text-dark border"
+            onClick={this.handleClick}
+            >
             </div>
         )
     }
