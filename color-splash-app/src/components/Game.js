@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Pixel from './Pixel'
 
+
+const colorPalette = ['#6CC2BD', '#5A809E', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
+
 class Game extends Component {
 
   state = {
@@ -12,20 +15,32 @@ class Game extends Component {
   
   generateMatrix = () => {
     let initialArray = this.reverseArray()
-    const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>Row{this.generateRow(row)}</div>)
+    const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>{this.generateRow(row)}</div>)
     // console.log(matrix)
     return matrix
   }
 
   generateRow = (rowNum) => {
     let initialArray = this.initializeArray()
-    const row = initialArray.map((elem, idx) => <Pixel idx={idx} row={rowNum}/>)
+    const row = initialArray.map((elem, idx) => <Pixel idx={idx} row={rowNum} color={this.getRandomColor()}/>)
     return row
+  }
+
+  getRandomInt = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min);
+    //The maximum is exclusive and the minimum is inclusive
+  }
+
+  getRandomColor = (num) => {
+      let randomColor = colorPalette[this.getRandomInt(0,6)]
+      return randomColor
   }
 
   render(){
     return(
-      <div style={{width: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
+      <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
         <div id='matrix' style={{textAlign: 'center'}}>
           {this.generateMatrix()}
         </div>
