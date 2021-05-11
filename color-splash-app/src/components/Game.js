@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Pixel from './Pixel'
 
 
-const colorPalette = ['#6CC2BD', '#1b4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
+const colorPalette = ['#6CC2BD', '#1B4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
 
 class Game extends Component {
 
@@ -55,13 +55,26 @@ class Game extends Component {
 
   handlePixelClick = (event) => {
     const n = this.state.rowsCols
-    const x = n-1-event.target.id.split(", ")[0]
+    const x = event.target.id.split(", ")[0]
     const y = event.target.id.split(", ")[1]
+
+    let colorSelected
 
     // if click not 0,0 change 0,0's color to match, and set state
     if(x+y>0) {
       // Set 0,0 color to selected color
       console.log('clicked')
+      let colorRGB = event.target.style.backgroundColor
+      let splitRGB = colorRGB.slice(4, colorRGB.length-1)
+      let rgbArray = splitRGB.split(", ")
+      let hexNumber = ("#" + (+rgbArray[0]).toString(16) + (+rgbArray[1]).toString(16) + (+rgbArray[2]).toString(16)).toUpperCase()
+
+      this.setState({splashColor: hexNumber})
+
+      return hexNumber
+    } else {
+      let hexNumber = this.state.splashColor
+      return hexNumber
     }
   }
 
