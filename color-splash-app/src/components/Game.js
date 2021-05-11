@@ -13,7 +13,8 @@ class Game extends Component {
     pixelLocations: [],       
     splashPixels: [],
     splashColor: '#5A809E',
-    pixels: []                
+    pixels: [],
+    updated: 0
   }
 
   // Make intial location array in state
@@ -33,6 +34,8 @@ class Game extends Component {
   createPixelsHolder = () => {
     const pixels = this.generateMatrix()
     this.setState({ pixels })
+    this.setState({updated: +this.state.updated+1})
+    console.log('generating matrix...')
   }
 
   setSplashColor = () => {
@@ -87,11 +90,13 @@ class Game extends Component {
                     idx={idx} 
                     row={rowNum} 
                     color={this.getRandomColor()} 
+                    updated={this.state.updated}
+                    rowsCols={this.state.rowsCols}
                     splashColor={this.state.splashColor}
                     setSplashColor={this.setSplashColor}
                     handlePixelClick={this.handlePixelClick}
                     pixels={this.state.pixels}
-                    pixelColorNumbers={this.pixelColorNumbers}/>
+                    pixelColorNumbers={this.state.pixelColorNumbers}/>
     }) // colorPalette[this.state.pixelColorNumbers[idx][rowNum]]
     return row
   }
@@ -140,22 +145,22 @@ class Game extends Component {
     this.initializeColorMap()
     this.createPixelsHolder()
     // print original block
+    console.log('update state: ' + this.state.updated)
+
+  }
+
+  componentDidUpdate() {
+    console.log('update state: ' + this.state.updated)
+    this.state.updated === 1? this.createPixelsHolder() : console.log()
   }
 
   render(){
-    // console.log(this.state.pixelLocations.length)
-    // console.log(this.state.pixelColorNumbers.length)
-    // console.log(this.state.pixels.length)
-    // console.log(this.state.pixelColorNumbers.length)
-    // console.log(this.state.pixelColorMap.length)
-
     return(
       <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
         <div id='matrix' style={{textAlign: 'center'}}>
           {/*this.state.pixels.map(element => element)  printing all pixels */}
           {this.state.pixels.map(element => element)}
-          {this.state.pixelColorNumbers.length!==0? console.log(this.state.pixelColorNumbers) : null}
-          {this.state.pixelColorNumbers.length!==0? this.state.pixels.map(element => element) : null}
+          {/* {this.state.pixelColorNumbers.length!==0? console.log(this.state.pixelColorNumbers) : null} */}
         </div>
       </div>
     )
