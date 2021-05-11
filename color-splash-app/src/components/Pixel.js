@@ -8,7 +8,6 @@ class Pixel extends Component {
         x: this.props.idx,
         y: this.props.row, 
         color: this.props.color,
-        isSplash: false,
         stage: 0
     }
 
@@ -30,8 +29,8 @@ class Pixel extends Component {
         this.setState({ color })
         let startPixel = document.getElementById("0, 0")
         startPixel.style.backgroundColor = color
-        console.log(startPixel)
-        console.log(color)
+        // console.log(startPixel)
+        // console.log(color)
     }
 
     render() {
