@@ -9,10 +9,11 @@ class Game extends Component {
   state = {
     rowsCols: 4,
     pixelColorNumbers: [],
-    pixelLocations: [],
+    pixelColorMap: [],    
+    pixelLocations: [],       
     splashPixels: [],
-    splashColor: '',
-    pixels: []
+    splashColor: '#5A809E',
+    pixels: []                
   }
 
   // Make intial location array in state
@@ -31,7 +32,6 @@ class Game extends Component {
   // Add all pixels to state
   createPixelsHolder = () => {
     const pixels = this.generateMatrix()
-    console.log(pixels)
     this.setState({ pixels })
   }
 
@@ -53,15 +53,34 @@ class Game extends Component {
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
   reverseArray = () => Array(this.state.rowsCols).fill().map((element,index)=>this.state.rowsCols - index -1)
   
+  initializeColorArray = () => {
+    // initialize array
+    let pixelColorNumbers = new Array(this.state.rowsCols).fill().map((element,index)=> {
+      return new Array(this.state.rowsCols).fill(0)
+    })
+    // set color values to array
+    pixelColorNumbers.map((item,idx) => item.map((elem,index)=> {
+      pixelColorNumbers[index][idx] = this.getRandomInt(0,6)
+    }))
+    this.setState({ pixelColorNumbers })
+    return pixelColorNumbers
+  }
+
+  setColor = () => {
+    // this method is called in Pixel
+    // whenever colorNumbers exists, change pixel color
+    
+  }
+
   generateMatrix = () => {
     let initialArray = this.reverseArray()
     const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>{this.generateRow(row)}</div>)
-    // console.log(matrix)
     return matrix
   }
 
   generateRow = (rowNum) => {
     let initialArray = this.initializeArray()
+    // console.log(this.state.pixelColorNumbers)
     const row = initialArray.map((elem, idx) => {
       return <Pixel key={idx+", "+rowNum}
                     id={idx+", "+rowNum}
@@ -71,8 +90,9 @@ class Game extends Component {
                     splashColor={this.state.splashColor}
                     setSplashColor={this.setSplashColor}
                     handlePixelClick={this.handlePixelClick}
-                    pixels={this.state.pixels}/>
-    })
+                    pixels={this.state.pixels}
+                    pixelColorNumbers={this.pixelColorNumbers}/>
+    }) // colorPalette[this.state.pixelColorNumbers[idx][rowNum]]
     return row
   }
 
@@ -83,24 +103,59 @@ class Game extends Component {
     //The maximum is exclusive and the minimum is inclusive
   }
 
-  getRandomColor = (num) => {
-      let randomColor = colorPalette[this.getRandomInt(0,6)]
+  getRandomColor = () => {
+      const randomColor = colorPalette[this.getRandomInt(0,6)]
       return randomColor
+  }
+
+  initializeColorMap = () => {
+    // initialize array
+    let pixelColorMap = new Array(this.state.rowsCols).fill().map((element,index)=> {
+      return new Array(this.state.rowsCols).fill(0)
+    })
+    // set color values to array
+    if(this.state.pixelColorNumbers.length!==0) {
+      pixelColorMap.map((item,idx) => item.map((elem,index)=> {
+        pixelColorMap[index][idx] = this.state.pixelColorNumbers[index][idx]
+      }))
+    }
+    this.setState({ pixelColorMap })
+    return pixelColorMap
+
+    this.state.pixelColorNumbers.map(item => {})
+  }
+
+  genMatrixV2 = () => {
+    // convert colorNumber to colorMap
+    this.state.pixelColorNumbers.map((item,idx)=> <div key={idx} className="row">{this.genRowsV2(item)}</div>)
+  }
+
+  genRowsV2 = (vals) => {
+    vals.map((val, idx) => <Pixel key={idx} color={val} selectedColor={this.state.splashColor}/>)
   }
 
   componentDidMount() {
     this.createArray()
-    console.log(this.createPixelsHolder())
+    this.initializeColorArray()
+    this.initializeColorMap()
+    this.createPixelsHolder()
     // print original block
   }
 
   render(){
-    if(this.state.pixels.length!==0)
-      console.log(this.state.pixels[3].props.children[0].props.color)
+    // console.log(this.state.pixelLocations.length)
+    // console.log(this.state.pixelColorNumbers.length)
+    // console.log(this.state.pixels.length)
+    // console.log(this.state.pixelColorNumbers.length)
+    // console.log(this.state.pixelColorMap.length)
+
     return(
       <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
         <div id='matrix' style={{textAlign: 'center'}}>
-          {this.state.pixels.map(element => element) /* printing all pixels */}
+          {/*this.state.pixels.map(element => element)  printing all pixels */}
+          {this.state.pixels.map(element => element)}
+          {this.state.pixelColorNumbers.length!==0? console.log(this.state.pixelColorNumbers) : null}
+          {this.state.pixelColorNumbers.length!==0? this.state.pixels.map(element => element) : null}
         </div>
       </div>
     )
@@ -127,3 +182,11 @@ export default Game
 //       //   return state
 //       // })
 //     }
+
+// set x,y coordinate in colorNumbers to num
+// if(this.state.pixelColorNumbers.length!==0) {
+//   this.setState(state => {
+//     state.pixelColorNumbers.push(num);
+//     return state
+//   })
+// }

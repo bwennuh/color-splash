@@ -10,6 +10,8 @@ class Pixel extends Component {
     }
 
     render() {
+        // if colorNumbers exists, say hi
+        console.log(this.props.pixelColorNumbers)
         return (
             <div 
             id={this.props.id}
