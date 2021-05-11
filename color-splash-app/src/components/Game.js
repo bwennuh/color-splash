@@ -7,23 +7,23 @@ const colorPalette = ['#6CC2BD', '#1B4668', '#5A809E', '#F57D7C', '#FFC1A6', '#F
 class Game extends Component {
 
   state = {
-    rowsCols: 4,
+    rowsCols: this.props.rowsCols,
     pixelColorNumbers: [], 
     pixelLocations: [],       
     splashPixels: [],
-    splashColor: '#5A809E',
+    splashColor: '',
     pixels: [],
-    updated: 0
+    updated: 0,
   }
 
-  // Make intial location array in state
+  // Make initial location array in state
   createArray = () => {
     // initialize array
-    let testArray = new Array(this.state.rowsCols).fill().map((element,index)=> {
-      return new Array(this.state.rowsCols).fill(0)
+    let testArray = new Array(this.props.rowsCols).fill().map((element,index)=> {
+      return new Array(this.props.rowsCols).fill(0)
     })
     // fill out array
-    const n = this.state.rowsCols
+    const n = this.props.rowsCols
     testArray.map((elem,idx)=>testArray[idx]=testArray[idx].fill(idx).map((elem,ind,arr) => (ind+" "+(n-1-arr[0]))))
     // Update our state to reflect intitial values
     this.setState({pixelLocations: testArray})
@@ -37,13 +37,13 @@ class Game extends Component {
     console.log('generating matrix...')
   }
 
-  initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
-  reverseArray = () => Array(this.state.rowsCols).fill().map((element,index)=>this.state.rowsCols - index -1)
+  initializeArray = () => Array(this.props.rowsCols).fill().map((element,index)=>index)
+  reverseArray = () => Array(this.props.rowsCols).fill().map((element,index)=>this.props.rowsCols - index -1)
 
   initializeColorArray = () => {
     // initialize array
-    let pixelColorNumbers = new Array(this.state.rowsCols).fill().map((element,index)=> {
-      return new Array(this.state.rowsCols).fill(0)
+    let pixelColorNumbers = new Array(this.props.rowsCols).fill().map((element,index)=> {
+      return new Array(this.props.rowsCols).fill(0)
     })
     // set color values to array
     pixelColorNumbers.map((item,idx) => item.map((elem,index)=> {
@@ -54,7 +54,7 @@ class Game extends Component {
   }
 
   initializeSplashPixels= () => {
-    const splashPixels = Array(this.state.rowsCols).fill().map(elem => Array(this.state.rowsCols).fill(false))
+    const splashPixels = Array(this.props.rowsCols).fill().map(elem => Array(this.props.rowsCols).fill(false))
     // change origin to true
     splashPixels[3][0]= true
     this.setState({splashPixels})
@@ -69,12 +69,15 @@ class Game extends Component {
   }
 
   handlePixelClick = (event) => {
-    const n = this.state.rowsCols
+    const n = this.props.rowsCols
     const x = event.target.id.split(", ")[0]
     const y = event.target.id.split(", ")[1]
 
     // if click not 0,0 change 0,0's color to match, and set state
     if(x+y>0) {
+
+      this.props.handleClickCount()
+
       // Set 0,0 color to selected color
       console.log('clicked')
       const hexNumber = this.getHexColor(event)
@@ -102,7 +105,7 @@ class Game extends Component {
         if(item2 === true) {
           // change color
           console.log(index2+', '+(n-index-1))
-          document.getElementById(index2+', '+(n-index-1)).style.backgroundColor = this.state.splashColor
+          document.getElementById(index2+', '+(n-index-1)).style.backgroundColor = hexNumber
         }
       }))
 
@@ -131,7 +134,7 @@ class Game extends Component {
                     idx={idx} 
                     row={rowNum} 
                     color={this.getRandomColor()} 
-                    rowsCols={this.state.rowsCols}
+                    rowsCols={this.props.rowsCols}
                     splashColor={this.state.splashColor}
                     setSplashColor={this.setSplashColor}
                     handlePixelClick={this.handlePixelClick}
@@ -160,15 +163,25 @@ class Game extends Component {
     this.createPixelsHolder()
     // print original block
     console.log('update state: ' + this.state.updated)
-
   }
 
   componentDidUpdate() {
     console.log('update state: ' + this.state.updated)
-    this.state.updated === 1? this.createPixelsHolder() : console.log()
+    this.state.updated === 1  ? this.createPixelsHolder() : console.log()
+
+    this.state.updated === 1 ? this.setState({splashColor: this.state.pixelColorNumbers[3][0]}) : console.log()
+
+    if (this.props.boardUpdate > 0){
+      console.log('Testing board update rendering')
+      this.props.decrementBoardUpdate()
+      this.createPixelsHolder()
+    }
+    
   }
 
   render(){
+
+    console.log(`Board update count: ${this.props.boardUpdate}`)
     return(
       <div>
         <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
@@ -179,8 +192,8 @@ class Game extends Component {
           </div>
         </div>
 
-        <div id='splash-pixels'>
-
+        <div id='click-count'>
+          <h3>You used {this.props.clickCount} turns </h3>
         </div>
 
       </div>
@@ -192,7 +205,7 @@ export default Game
 
 
 
-// const n = this.state.rowsCols
+// const n = this.props.rowsCols
 //     const x = n-1-event.target.id.split(", ")[0]
 //     const y = event.target.id.split(", ")[1]
 

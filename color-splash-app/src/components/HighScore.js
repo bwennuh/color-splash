@@ -8,7 +8,7 @@ class HighScore extends Component {
         <form onSubmit={this.props.handleScoreSubmit}>
           <input type="text" placeholder="Enter a name"/>
         </form>
-        <h3>You used {10} turns </h3>
+        <h3>You used {this.props.clickCount} turns </h3>
       </div>
     )
   }
