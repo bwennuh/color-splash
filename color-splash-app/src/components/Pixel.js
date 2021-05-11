@@ -25,6 +25,12 @@ class Pixel extends Component {
         }
     }
 
+    handleClick = (event) => {
+        const color = this.props.handlePixelClick(event)
+        this.setState({ color })
+        console.log(color)
+    }
+
     render() {
         this.handleColor()
         return (
@@ -32,7 +38,7 @@ class Pixel extends Component {
             id={this.props.id}
             style={{width: '72px', height: '72px', padding: '0px', backgroundColor: this.state.color}} 
             className="col text-dark border"
-            onClick={(event) => this.props.handlePixelClick(event)}
+            onClick={(event) => this.handleClick(event)}
             >
             </div>
         )
