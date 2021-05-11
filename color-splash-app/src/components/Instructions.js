@@ -37,6 +37,22 @@ class Instructions extends Component {
           </ol>
         </div>
 
+        <div id='select-board-size'>
+        <select onChange={(event) => this.props.handleBoardSize(+event.target.value)}
+                  className="custom-select my-1 mr-sm-2">
+            <option selected disabled>Choose Board Size</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
+
 
       </div>
     )
