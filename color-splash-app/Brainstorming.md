@@ -19,3 +19,26 @@ Game Play Code Brainstorming:
     b. To determine this, each pixel in the splash will check the pixels directly surrounding them (left, right, up, down) to determine if their initial state (color) matches the color that was clicked on
         
 4) The player should keep clicking on pixels (of the color that they want the splash to change to) in order to get the splash to fill up the entire playing board
+
+
+
+      // Each pixel that has a color that matches the splash color 
+      // should be added to the splash colors array
+      //  -- specifically
+      // 1) initialize splash pixels an empty array of false rowsCols x rowsCols
+      // 2) on click >> If any pixel matches clicked color, change its isSplash to true or false inside splash pixels
+
+      // Any time a new color is clicked, all pixels in the splash 
+      // colors array should change to the new color selected
+      // 3) Change colors on the DOM to reflect isSplash state, so any pixels that are true, will have a bg color of the splash color
+
+      // we initialize an array of all false
+      // If state is in Pixel versus
+      // establish which pixels are true or false
+      // Map through splashPixels, if splash color = pixel.bgColor, then setState isSplash = true
+      // THEN
+      // For each pixel that turns out to be true, change its bg color to match splash color
+      // splashPixel.map((elem,index) => elem.map((elem2,index2) => splashPixel[index2][index] = )
+
+      // If state is in Game
+      // splashPixel.map((elem,index) => )

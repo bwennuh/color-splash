@@ -53,6 +53,21 @@ class Game extends Component {
     return pixelColorNumbers
   }
 
+  initializeSplashPixels= () => {
+    const splashPixels = Array(this.state.rowsCols).fill().map(elem => Array(this.state.rowsCols).fill(false))
+    // change origin to true
+    splashPixels[3][0]= true
+    this.setState({splashPixels})
+  }
+
+  getHexColor = (event) => {
+    let colorRGB = event.target.style.backgroundColor
+    let splitRGB = colorRGB.slice(4, colorRGB.length-1)
+    let rgbArray = splitRGB.split(", ")
+    let hexNumber = ("#" + (+rgbArray[0]).toString(16) + (+rgbArray[1]).toString(16) + (+rgbArray[2]).toString(16)).toUpperCase()
+    return hexNumber
+  }
+
   handlePixelClick = (event) => {
     const n = this.state.rowsCols
     const x = event.target.id.split(", ")[0]
@@ -62,17 +77,25 @@ class Game extends Component {
     if(x+y>0) {
       // Set 0,0 color to selected color
       console.log('clicked')
-      let colorRGB = event.target.style.backgroundColor
-      let splitRGB = colorRGB.slice(4, colorRGB.length-1)
-      let rgbArray = splitRGB.split(", ")
-      let hexNumber = ("#" + (+rgbArray[0]).toString(16) + (+rgbArray[1]).toString(16) + (+rgbArray[2]).toString(16)).toUpperCase()
+      const hexNumber = this.getHexColor(event)
+      // Origin block is being changed in Pixel
 
       // Update the splash color state to be equal to the selected color
       this.setState({splashColor: hexNumber})
 
-      // Each pixel that has a color that matches the splash color should be added to the splash colors array
+      // Update splashPixels to include all pixels that have same color
+      console.log(colorPalette.indexOf(hexNumber))
+      let copy = [...this.state.splashPixels]
+      const colorIndex = colorPalette.indexOf(hexNumber)
+      // if colorIndex (or splash color) equals current item, set same value in splashPixels
+      this.state.pixelColorNumbers.map((item,index) => item.map((item2,index2)=> {
+        // if equal
+        item2 === colorIndex? copy[index][index2] = true : console.log()
+        // set value
+      }))
+      console.log(copy)
 
-      // Any time a new color is clicked, all pixels in the splash colors array should change to the new color selected
+      // Update the color
 
       return hexNumber
     } else {
@@ -122,6 +145,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
+    this.initializeSplashPixels()
     this.createArray()
     this.initializeColorArray()
     this.createPixelsHolder()
