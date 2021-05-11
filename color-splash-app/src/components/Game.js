@@ -93,9 +93,18 @@ class Game extends Component {
         item2 === colorIndex? copy[index][index2] = true : console.log()
         // set value
       }))
-      console.log(copy)
+      this.setState({splashPixels: copy})
 
       // Update the color
+      console.log(this.state.splashPixels)
+      // map over splashPixels, if pixel is true, then change color to splash color
+      this.state.splashPixels.map((item,index)=> item.map((item2,index2)=> {
+        if(item2 === true) {
+          // change color
+          console.log(index2+', '+(n-index-1))
+          document.getElementById(index2+', '+(n-index-1)).style.backgroundColor = this.state.splashColor
+        }
+      }))
 
       return hexNumber
     } else {
