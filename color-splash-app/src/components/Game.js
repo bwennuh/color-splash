@@ -67,13 +67,18 @@ class Game extends Component {
       let rgbArray = splitRGB.split(", ")
       let hexNumber = ("#" + (+rgbArray[0]).toString(16) + (+rgbArray[1]).toString(16) + (+rgbArray[2]).toString(16)).toUpperCase()
 
+      // Update the splash color state to be equal to the selected color
       this.setState({splashColor: hexNumber})
+
+      // Each pixel that has a color that matches the splash color should be added to the splash colors array
+
+      // Any time a new color is clicked, all pixels in the splash colors array should change to the new color selected
 
       return hexNumber
     } else {
       let startPixel = document.getElementById("0, 0")
       this.setState({splashColor: startPixel.style.backgroundColor})
-      
+
       let hexNumber = this.state.splashColor
       return hexNumber
     }
@@ -132,12 +137,19 @@ class Game extends Component {
 
   render(){
     return(
-      <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
-        <div id='matrix' style={{textAlign: 'center'}}>
-          {/*this.state.pixels.map(element => element)  printing all pixels */}
-          {this.state.pixels.map(element => element)}
-          {/* {this.state.pixelColorNumbers.length!==0? console.log(this.state.pixelColorNumbers) : null} */}
+      <div>
+        <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
+          <div id='matrix' style={{textAlign: 'center'}}>
+            {/*this.state.pixels.map(element => element)  printing all pixels */}
+            {this.state.pixels.map(element => element)}
+            {/* {this.state.pixelColorNumbers.length!==0? console.log(this.state.pixelColorNumbers) : null} */}
+          </div>
         </div>
+
+        <div id='splash-pixels'>
+
+        </div>
+
       </div>
     )
   }
