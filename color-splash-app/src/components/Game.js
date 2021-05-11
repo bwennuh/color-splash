@@ -8,8 +8,7 @@ class Game extends Component {
 
   state = {
     rowsCols: 4,
-    pixelColorNumbers: [],
-    pixelColorMap: [],    
+    pixelColorNumbers: [], 
     pixelLocations: [],       
     splashPixels: [],
     splashColor: '#5A809E',
@@ -38,24 +37,9 @@ class Game extends Component {
     console.log('generating matrix...')
   }
 
-  setSplashColor = () => {
-    
-  }
-
-  handlePixelClick = (event) => {
-    const n = this.state.rowsCols
-    const x = n-1-event.target.id.split(", ")[0]
-    const y = event.target.id.split(", ")[1]
-
-    // if click not 0,0 change 0,0's color to match, and set state
-    if(x+y>0) {
-      // Set 0,0 color to selected color
-    }
-  }
-
   initializeArray = () => Array(this.state.rowsCols).fill().map((element,index)=>index)
   reverseArray = () => Array(this.state.rowsCols).fill().map((element,index)=>this.state.rowsCols - index -1)
-  
+
   initializeColorArray = () => {
     // initialize array
     let pixelColorNumbers = new Array(this.state.rowsCols).fill().map((element,index)=> {
@@ -69,10 +53,16 @@ class Game extends Component {
     return pixelColorNumbers
   }
 
-  setColor = () => {
-    // this method is called in Pixel
-    // whenever colorNumbers exists, change pixel color
-    
+  handlePixelClick = (event) => {
+    const n = this.state.rowsCols
+    const x = n-1-event.target.id.split(", ")[0]
+    const y = event.target.id.split(", ")[1]
+
+    // if click not 0,0 change 0,0's color to match, and set state
+    if(x+y>0) {
+      // Set 0,0 color to selected color
+      console.log('clicked')
+    }
   }
 
   generateMatrix = () => {
@@ -90,7 +80,6 @@ class Game extends Component {
                     idx={idx} 
                     row={rowNum} 
                     color={this.getRandomColor()} 
-                    updated={this.state.updated}
                     rowsCols={this.state.rowsCols}
                     splashColor={this.state.splashColor}
                     setSplashColor={this.setSplashColor}
@@ -113,36 +102,9 @@ class Game extends Component {
       return randomColor
   }
 
-  initializeColorMap = () => {
-    // initialize array
-    let pixelColorMap = new Array(this.state.rowsCols).fill().map((element,index)=> {
-      return new Array(this.state.rowsCols).fill(0)
-    })
-    // set color values to array
-    if(this.state.pixelColorNumbers.length!==0) {
-      pixelColorMap.map((item,idx) => item.map((elem,index)=> {
-        pixelColorMap[index][idx] = this.state.pixelColorNumbers[index][idx]
-      }))
-    }
-    this.setState({ pixelColorMap })
-    return pixelColorMap
-
-    this.state.pixelColorNumbers.map(item => {})
-  }
-
-  genMatrixV2 = () => {
-    // convert colorNumber to colorMap
-    this.state.pixelColorNumbers.map((item,idx)=> <div key={idx} className="row">{this.genRowsV2(item)}</div>)
-  }
-
-  genRowsV2 = (vals) => {
-    vals.map((val, idx) => <Pixel key={idx} color={val} selectedColor={this.state.splashColor}/>)
-  }
-
   componentDidMount() {
     this.createArray()
     this.initializeColorArray()
-    this.initializeColorMap()
     this.createPixelsHolder()
     // print original block
     console.log('update state: ' + this.state.updated)

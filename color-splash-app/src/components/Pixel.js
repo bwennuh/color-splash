@@ -19,10 +19,6 @@ class Pixel extends Component {
         const n = this.props.rowsCols
         // if colorNumbers exists, set color (we need to move this code to avoid exceeding update depth)
         if(this.props.pixelColorNumbers.length === this.props.rowsCols) {
-            console.log(this.props.pixelColorNumbers)
-            console.log(this.props.pixelColorNumbers[y][x])
-            console.log(x+' '+y)
-            console.log(this.props.updated)
             if(this.state.stage === 0 ) {
                 this.setState({stage: +this.state.stage+1, color: colorPalette[this.props.pixelColorNumbers[n-y-1][x]]})
             }
