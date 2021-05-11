@@ -58,8 +58,6 @@ class Game extends Component {
     const x = event.target.id.split(", ")[0]
     const y = event.target.id.split(", ")[1]
 
-    let colorSelected
-
     // if click not 0,0 change 0,0's color to match, and set state
     if(x+y>0) {
       // Set 0,0 color to selected color
@@ -73,6 +71,9 @@ class Game extends Component {
 
       return hexNumber
     } else {
+      let startPixel = document.getElementById("0, 0")
+      this.setState({splashColor: startPixel.style.backgroundColor})
+      
       let hexNumber = this.state.splashColor
       return hexNumber
     }

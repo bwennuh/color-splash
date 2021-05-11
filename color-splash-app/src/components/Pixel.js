@@ -28,6 +28,9 @@ class Pixel extends Component {
     handleClick = (event) => {
         const color = this.props.handlePixelClick(event)
         this.setState({ color })
+        let startPixel = document.getElementById("0, 0")
+        startPixel.style.backgroundColor = color
+        console.log(startPixel)
         console.log(color)
     }
 
