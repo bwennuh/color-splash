@@ -217,7 +217,7 @@ class Game extends Component {
           <h3>You used {this.props.clickCount} turns </h3>
         </div>
 
-        <Link to='/game-over'>
+        <Link to='/score'>
             <button id="play-button" className="rainbow-background">See Score</button>
         </Link>
 
