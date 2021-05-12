@@ -68,8 +68,7 @@ class MainContainer extends Component {
 
   render(){
     return(
-      <div className='d-flex row justify-content-center text-center'>
-        <h1>Main Container for Color Splash</h1>
+      <div className='d-flex row justify-content-center text-center align-items-center' style={{height: '100vh'}}>
         <Switch>
 
           <Route exact path='/' component={Home}/>
@@ -79,8 +78,10 @@ class MainContainer extends Component {
           </Route> */}
 
           <Route path='/color-splash'>
-            <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
-            <GameContainer rowsCols={this.state.rowsCols} handleClickCount={this.handleClickCount} clickCount={this.state.clickCount} boardUpdate={this.state.boardUpdate} decrementBoardUpdate={this.decrementBoardUpdate} />
+            <div className='d-flex flex-row'>
+              <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
+              <GameContainer rowsCols={this.state.rowsCols} handleClickCount={this.handleClickCount} clickCount={this.state.clickCount} boardUpdate={this.state.boardUpdate} decrementBoardUpdate={this.decrementBoardUpdate} />
+            </div>
           </Route>
 
           <Route path='/score'>

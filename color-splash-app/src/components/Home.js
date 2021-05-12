@@ -21,18 +21,19 @@ class Home extends Component {
 
   getTopThreeScores = () => {
     console.log(this.state.highscores)
-    const allScores = this.state.highscores.map((score) => [score.playerName, score.score])
+    let allScores = this.state.highscores.map((score) => [score.playerName, score.score])
     console.log(allScores)
 
-    allScores.sort((score1, score2) => {
-      if (score1.score < score2.score){
-        return -1
-      } else if (score1.score > score2.score){
-        return 1
-      } else {
-        return 0
-      }
-    })
+    allScores.sort((score1, score2) => (
+      score1[1]-score2[1]
+      // if (score1.score < score2.score){
+      //   return -1
+      // } else if (score1.score > score2.score){
+      //   return 1
+      // } else {
+      //   return 0
+      // }
+    ))
 
     const topThreeScores = allScores.slice(0,3)
     console.log(topThreeScores)
@@ -42,7 +43,6 @@ class Home extends Component {
   render(){
     return(
       <div>
-        <h1>Home</h1>
         <div id="home">
           <div id="color-splash">
             <span style={{color: "#6CC2BD"}}>C</span>
