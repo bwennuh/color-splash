@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Pixel from './Pixel'
-
 
 const colorPalette = ['#6CC2BD', '#1B4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
 
@@ -216,6 +216,10 @@ class Game extends Component {
         <div id='click-count'>
           <h3>You used {this.props.clickCount} turns </h3>
         </div>
+
+        <Link to='/game-over'>
+            <button id="play-button" className="rainbow-background">See Score</button>
+        </Link>
 
       </div>
     )
