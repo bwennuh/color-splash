@@ -20,6 +20,13 @@
       "score": 75,
       "clickCount": 28,
       "finalColor": "yellow"
+    },
+    {
+      "playerName": "Brenna",
+      "score": 150,
+      "clickCount": 6,
+      "finalColor": "",
+      "id": 4
     }
   ]
 }
