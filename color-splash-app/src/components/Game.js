@@ -205,7 +205,7 @@ class Game extends Component {
     // console.log(`Board update count: ${this.props.boardUpdate}`)
     return(
       <div>
-        <div style={{maxWidth: '70vw', margin: 'auto'}} className='d-flex justify-content-center'>
+        <div style={{maxWidth: '100vw', margin: 'auto'}} className='d-flex justify-content-center'>
           <div id='matrix' style={{textAlign: 'center'}}>
             {/*this.state.pixels.map(element => element)  printing all pixels */}
             {this.state.pixels.map(element => element)}

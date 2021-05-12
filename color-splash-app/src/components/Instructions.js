@@ -4,9 +4,22 @@ import { Link } from 'react-router-dom'
 class Instructions extends Component {
   render(){
     return(
-      <div>
-        <h1>Instructions</h1>
-        <h2>COLOR SPLASH</h2>
+      <div style={{paddingTop: '5%'}}>
+        <div id='select-board-size' style={{paddingBottom: '5%'}}>
+        <select onChange={(event) => this.props.handleBoardSize(+event.target.value)}
+                  className="custom-select my-1 mr-sm-2">
+            <option selected disabled>Choose Board Size</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+        </div>
 
         <div className="instruction-list">
           <h3><span style={{color: "#5A809E"}}>Game Play Instructions:</span></h3>
@@ -37,25 +50,9 @@ class Instructions extends Component {
             </li>
           </ol>
         </div>
-
-        <div id='select-board-size'>
-        <select onChange={(event) => this.props.handleBoardSize(+event.target.value)}
-                  className="custom-select my-1 mr-sm-2">
-            <option selected disabled>Choose Board Size</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-        </div>
-        <Link to='/color-splash'>
+        {/* <Link to='/color-splash'>
             <button id="play-button" className="rainbow-background">Start Game</button>
-        </Link>
+        </Link> */}
 
       </div>
     )
