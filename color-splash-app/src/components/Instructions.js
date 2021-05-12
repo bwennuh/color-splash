@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Instructions extends Component {
   render(){
@@ -52,7 +53,9 @@ class Instructions extends Component {
             <option value="12">12</option>
           </select>
         </div>
-
+        <Link to='/color-splash'>
+            <button id="play-button" className="rainbow-background">Start Game</button>
+        </Link>
 
       </div>
     )

@@ -5,6 +5,9 @@ import GameContainer from '../containers/GameContainer.js'
 import HighScore from '../components/HighScore.js'
 import EndScreen from '../components/EndScreen.js'
 import Credits from '../components/Credits.js'
+import { Switch, Route, Link, Router } from 'react-router-dom'
+
+const BASE_URL = 'http://localhost:3000'
 
 class MainContainer extends Component {
 
@@ -67,12 +70,33 @@ class MainContainer extends Component {
     return(
       <div>
         <h1>Main Container for Color Splash</h1>
-        <Home />
-        <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
-        <GameContainer rowsCols={this.state.rowsCols} handleClickCount={this.handleClickCount} clickCount={this.state.clickCount} boardUpdate={this.state.boardUpdate} decrementBoardUpdate={this.decrementBoardUpdate} />
-        <HighScore handleScoreSubmit={this.handleScoreSubmit} clickCount={this.state.clickCount} />
-        <EndScreen />
-        <Credits />
+        <Switch>
+
+          <Route exact path='/' component={Home}/>
+
+          {/* <Route path='/instructions'>
+            <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
+          </Route> */}
+
+          <Route path='/color-splash'>
+            <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
+            <GameContainer rowsCols={this.state.rowsCols} handleClickCount={this.handleClickCount} clickCount={this.state.clickCount} boardUpdate={this.state.boardUpdate} decrementBoardUpdate={this.decrementBoardUpdate} />
+          </Route>
+
+          <Route path='/score'>
+            <HighScore handleScoreSubmit={this.handleScoreSubmit} clickCount={this.state.clickCount} />
+          </Route>
+
+          <Route path='/game-over'>
+            <EndScreen />
+          </Route>
+
+          <Route path='/credits'>
+            <Credits />
+          </Route>
+
+        </Switch>
+
       </div>
     )
   }

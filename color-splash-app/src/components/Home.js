@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import '../App.css';
 
 class Home extends Component {
@@ -20,7 +21,9 @@ class Home extends Component {
             <span style={{color: "#1b4668"}}>S</span>
             <span style={{color: "#5A809E"}}>H</span>
           </div>
+          <Link to='/color-splash'>
             <button id="play-button" className="rainbow-background">Click to Play</button>
+          </Link>
 
         </div>
       </div>
