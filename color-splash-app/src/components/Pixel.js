@@ -34,6 +34,10 @@ class Pixel extends Component {
         // console.log(color)
     }
 
+    changeColor = (color) => {
+        this.setState({color})
+    }
+
     render() {
         // this.handleColor()
         // console.log(this.state.stage + ' '+ this.props.rowsCols + " " + this.props.pixelColorNumbers.length)

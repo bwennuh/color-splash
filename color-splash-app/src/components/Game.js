@@ -15,7 +15,7 @@ class Game extends Component {
     updated: 0,
   }
 
-  pixelReferences = Array(this.props.rowsCols).fill().map((item,index)=> Array(this.props.rowsCols).fill(React.createRef()))
+  pixelReferences = Array(this.props.rowsCols).fill().map(()=> Array(this.props.rowsCols).fill().map(()=>React.createRef()))
 
   // Make initial location array in state
   createArray = () => {
@@ -130,13 +130,12 @@ class Game extends Component {
 
   generateRow = (rowNum) => {
     let initialArray = this.initializeArray()
-    // console.log(this.state.pixelColorNumbers)
     const row = initialArray.map((elem, idx) => {
       return <Pixel key={idx+", "+rowNum}
                     id={idx+", "+rowNum}
                     idx={idx} 
                     row={rowNum} 
-                    ref={this.pixelReferences[idx][rowNum]}
+                    ref={this.pixelReferences[rowNum][idx]}
                     color={this.getRandomColor()}     // supposed to be whatevers in pixelColorNumbers BUt it doesn't exist until like half way through
                     rowsCols={this.props.rowsCols}
                     splashColor={this.state.splashColor}
@@ -170,29 +169,34 @@ class Game extends Component {
   }
 
   componentDidUpdate() {
-    // console.log('update state: ' + this.state.updated)
+    const n = this.props.rowsCols
+    console.log('update state: ' + this.state.updated)
     if(this.state.updated === 1) {
       this.createPixelsHolder()
       this.setState({splashColor: this.state.pixelColorNumbers[this.props.rowsCols-1][0]})
       // fix colors here??
       console.log(this.state.pixelColorNumbers)
       console.log(this.state.pixelLocations)
-      console.log(this.pixelReferences)
       const pixel = this.pixelReferences
       this.state.pixelLocations.map((item,index) => item.map((item2,index2)=> {
-        console.log(index2 + ',' + index + ' ' +  pixel[index2][index].current.state.color + ' ' + pixel[index2][index].current.state.x + ',' + pixel[index2][index].current.state.y)
+        console.log(pixel[n-index2-1][index].current.state.color + ' ' + pixel[n-index2-1][index].current.state.x + ',' + pixel[n-index2-1][index].current.state.y)
+        // Now we need to match the current game board to our Color Map which is pixelColorNumbers
+        pixel[n-index2-1][index].current.changeColor(colorPalette[this.state.pixelColorNumbers[index2][index]])
       }))
 
     }
 
     if (this.props.boardUpdate > 0){
       console.log('Testing board update rendering')
+      this.pixelReferences = Array(this.props.rowsCols).fill().map(()=> Array(this.props.rowsCols).fill().map(()=>React.createRef())) // initializing 
       console.log(this.props.rowsCols)
       this.props.decrementBoardUpdate()
       this.initializeSplashPixels()
       this.createArray()
       this.initializeColorArray()
       this.createPixelsHolder()
+      this.setState({updated: +this.state.updated-1})
+      console.log(this.state.updated)
     }
     
   }
