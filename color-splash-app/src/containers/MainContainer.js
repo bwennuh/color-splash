@@ -68,7 +68,7 @@ class MainContainer extends Component {
 
   render(){
     return(
-      <div>
+      <div className='d-flex row justify-content-center text-center'>
         <h1>Main Container for Color Splash</h1>
         <Switch>
 

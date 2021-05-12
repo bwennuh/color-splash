@@ -7,7 +7,7 @@ class EndScreen extends Component {
       <div>
         <h1>EndScreen</h1>
 
-        <Link to='/instructions'>
+        <Link to='/color-splash'>
           <h2 onClick={()=>console.log('Bring me to home page')}>Play Again?</h2>
         </Link>
 
