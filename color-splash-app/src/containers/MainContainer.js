@@ -18,14 +18,14 @@ class MainContainer extends Component {
     boardUpdate: 0
   }
 
-  handleScoreSubmit = (event) => {
-    event.preventDefault()
-    const input = event.target.children[0]
-    // User's nickname
-    console.log(input.value)
-    // Reset field
-    input.value = ""
-  }
+  // handleScoreSubmit = (event) => {
+  //   event.preventDefault()
+  //   const input = event.target.children[0]
+  //   // User's nickname
+  //   console.log(input.value)
+  //   // Reset field
+  //   input.value = ""
+  // }
 
   handleClickCount = () => {
     let clicks = this.state.clickCount
@@ -84,7 +84,7 @@ class MainContainer extends Component {
           </Route>
 
           <Route path='/score'>
-            <HighScore handleScoreSubmit={this.handleScoreSubmit} clickCount={this.state.clickCount} />
+            <HighScore clickCount={this.state.clickCount} />
           </Route>
 
           <Route path='/game-over'>
