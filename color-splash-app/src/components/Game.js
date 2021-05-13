@@ -18,7 +18,7 @@ class Game extends Component {
   pixelReferences = Array(this.props.rowsCols).fill().map(()=> Array(this.props.rowsCols).fill().map(()=>React.createRef()))
 
   // Make initial location array in state
-  createArray = () => {
+  createArray = () => {            
     // initialize array
     let testArray = new Array(this.props.rowsCols).fill().map((element,index)=> {
       return new Array(this.props.rowsCols).fill(0)
@@ -200,6 +200,7 @@ class Game extends Component {
     }
     
   }
+
 
   render(){
     // console.log(`Board update count: ${this.props.boardUpdate}`)

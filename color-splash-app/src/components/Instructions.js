@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 class Instructions extends Component {
   render(){
     return(
-      <div style={{paddingTop: '5%'}}>
+      <div style={{paddingTop: '0%', width: '40vw'}}>
         <div id='select-board-size' style={{paddingBottom: '5%'}}>
         <select onChange={(event) => this.props.handleBoardSize(+event.target.value)}
                   className="custom-select my-1 mr-sm-2">
@@ -21,7 +21,7 @@ class Instructions extends Component {
           </select>
         </div>
 
-        <div className="instruction-list">
+        <div className="instruction-list" style={{fontSize: '80%'}}>
           <h3><span style={{color: "#5A809E"}}>Game Play Instructions:</span></h3>
           <ol>
             <li>
