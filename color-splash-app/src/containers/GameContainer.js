@@ -5,7 +5,7 @@ class GameContainer extends Component {
 
     render() {
         return (
-            <div style={{padding: '5%'}}>
+            <div style={{padding: '5%', backgroundColor: 'white'}}>
                 <h1>Splash the board!</h1>
 
                 <Game handleClickCount={this.props.handleClickCount} clickCount={this.props.clickCount} rowsCols={this.props.rowsCols} boardUpdate={this.props.boardUpdate} decrementBoardUpdate={this.props.decrementBoardUpdate} />

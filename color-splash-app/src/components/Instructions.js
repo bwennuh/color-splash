@@ -5,9 +5,9 @@ class Instructions extends Component {
   render(){
     return(
       <div className='d-flex flex-column justify-content-center' style={{paddingTop: '0%', width: '40vw'}}>
-        <div id='select-board-size' style={{paddingBottom: '5%', paddingLeft: '100px',}}>
+        <div id='select-board-size' style={{paddingBottom: '5%', paddingLeft: '100px', paddingTop: '2%'}}>
           <select onChange={(event) => this.props.handleBoardSize(+event.target.value)}
-                  className='form-select bg-light text-black' style={{width: '40%'}}>
+                  className='form-select bg-light text-black' style={{width: '50%'}}>
             <option selected disabled>Choose Board Size</option>
             <option value="4">4</option>
             <option value="5">5</option>
@@ -21,7 +21,7 @@ class Instructions extends Component {
           </select>
         </div>
 
-        <div className="instruction-list" style={{paddingLeft: '100px', paddingRight: '50px'}}>
+        <div className="instruction-list" style={{padding: '50px', backgroundColor: "white"}}>
           <h3><span style={{color: "#5A809E"}}>Game Play Instructions:</span></h3>
           <ol>
             <li>

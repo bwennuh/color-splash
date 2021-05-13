@@ -20,9 +20,9 @@ class Home extends Component {
   }
 
   getTopThreeScores = () => {
-    console.log(this.state.highscores)
+    // console.log(this.state.highscores)
     let allScores = this.state.highscores.map((score) => [score.playerName, score.score])
-    console.log(allScores)
+    // console.log(allScores)
 
     allScores.sort((score1, score2) => (
       score1[1]-score2[1]
@@ -36,7 +36,7 @@ class Home extends Component {
     ))
 
     const topThreeScores = allScores.slice(0,3)
-    console.log(topThreeScores)
+    // console.log(topThreeScores)
     return (topThreeScores.map(score => <h3>{score[0]}: {score[1]}</h3>))
   }
 
@@ -44,7 +44,7 @@ class Home extends Component {
     return(
       <div style={{zIndex: '2'}}>
         <div id="home">
-          <div id="color-splash">
+          <div id="color-splash" >
             <span style={{color: "#6CC2BD"}}>C</span>
             <span style={{color: "#5A809E"}}>O</span>
             <span style={{color: "#1b4668"}}>L</span>
@@ -64,7 +64,7 @@ class Home extends Component {
         </div>
 
         <div id='high-score-list'>
-          <h2>Current High Scores:</h2>
+          <h2 style={{color: ''}}>Current High Scores:</h2>
           {this.getTopThreeScores()}
         </div>
 

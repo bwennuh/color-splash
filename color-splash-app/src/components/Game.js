@@ -179,7 +179,7 @@ class Game extends Component {
       console.log(this.state.pixelLocations)
       const pixel = this.pixelReferences
       this.state.pixelLocations.map((item,index) => item.map((item2,index2)=> {
-        console.log(pixel[n-index2-1][index].current.state.color + ' ' + pixel[n-index2-1][index].current.state.x + ',' + pixel[n-index2-1][index].current.state.y)
+        // console.log(pixel[n-index2-1][index].current.state.color + ' ' + pixel[n-index2-1][index].current.state.x + ',' + pixel[n-index2-1][index].current.state.y)
         // Now we need to match the current game board to our Color Map which is pixelColorNumbers
         pixel[n-index2-1][index].current.changeColor(colorPalette[this.state.pixelColorNumbers[index2][index]])
       }))
