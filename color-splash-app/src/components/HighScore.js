@@ -64,7 +64,7 @@ class HighScore extends Component {
   render(){
     return(
       <div className="d-flex flex-column">
-        <h1 className='thanks' style={{backgroundColor: 'white', width: '50%', margin: 'auto', marginTop: '5%', marginBottom: '2%'}}>Thanks for playing!</h1>
+        <h1 className='thanks' style={{width: '50%', margin: 'auto', marginTop: '5%', marginBottom: '2%'}}>THANKS FOR PLAYING!</h1>
         <form onSubmit={this.submitHandler}>
           <input onChange={(e) => this.setState({playerName: e.target.value})} type="text" placeholder="Enter your name"/>
           <h3 className='score-info' style={{backgroundColor: 'white', width: '30%', margin: 'auto', marginTop: '2%'}}>You used {this.props.clickCount} turns </h3>

@@ -47,7 +47,7 @@
   text-shadow: -1px 1px 0 #FEE4C4, 1px 1px 0 #FEE4C4, 1px -1px 0 #FEE4C4, -1px -1px 0 #FEE4C4;
 } */
 
-#color-splash, .game-over, .credits {
+#color-splash, .game-over, .credits, .thanks {
   font-size: 48pt;
   font-weight: 900;
   letter-spacing: 3px;
@@ -58,6 +58,10 @@
   color: white;
   font-size: 66pt;
   text-shadow: -2px 2px 0 #1b4668, 2px 2px 0 #1b4668, 2px -2px 0 #1b4668, -2px -2px 0 #1b4668;
+}
+
+.thanks{
+  letter-spacing: 15px;
 }
 
 /* #color-splash{
@@ -161,14 +165,16 @@ span {
   text-shadow: -1px 1px 0 #1b4668, 1px 1px 0 #1b4668, 1px -1px 0 #1b4668, -1px -1px 0 #1b4668;
 }
 
-.thanks, .names {
+.names {
   font-size: 30pt;
   font-weight: bold;
-  font-family: "Arial", sans-serif;
+  font-family: "Arial Black", sans-serif;
   letter-spacing: 1px;
-  color: #1b4668;
   padding: 10px;
-
   color: white;
   text-shadow: -2px 2px 0 #1b4668, 2px 2px 0 #1b4668, 2px -2px 0 #1b4668, -2px -2px 0 #1b4668;
+}
+
+#navbar-home{
+  text-shadow: -1px 1px 0 #6CC2BD, 1px 1px 0 #6CC2BD, 1px -1px 0 #6CC2BD, -1px -1px 0 #6CC2BD;
 }
