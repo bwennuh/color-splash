@@ -46,7 +46,7 @@ class Pixel extends Component {
         return (
             <div 
             id={this.props.id}
-            style={{width: '72px', height: '72px', padding: '0px', backgroundColor: this.state.color}} 
+            style={{width: '60px', height: '60px', padding: '0px', backgroundColor: this.state.color}} 
             className="col text-dark border"
             onClick={(event) => this.handleClick(event)}
             >
