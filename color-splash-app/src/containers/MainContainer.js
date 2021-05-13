@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { Switch, Route, Link, Router } from 'react-router-dom'
+
 import Home from '../components/Home.js'
 import Instructions from '../components/Instructions.js'
 import GameContainer from '../containers/GameContainer.js'
 import HighScore from '../components/HighScore.js'
 import EndScreen from '../components/EndScreen.js'
 import Credits from '../components/Credits.js'
-import { Switch, Route, Link, Router } from 'react-router-dom'
+import Navbar from '../components/Navbar.js'
+
 
 const BASE_URL = 'http://localhost:3000'
 
@@ -68,7 +71,8 @@ class MainContainer extends Component {
 
   render(){
     return(
-      <div className='d-flex row justify-content-center text-center align-items-center' style={{height: '100vh'}}>
+      <div className='d-flex row justify-content-center text-center align-self-center' style={{height: '100vh'}}>
+        <Navbar />
         <Switch>
 
           <Route exact path='/' component={Home}/>
@@ -78,7 +82,7 @@ class MainContainer extends Component {
           </Route> */}
 
           <Route path='/color-splash'>
-            <div className='d-flex flex-row'>
+            <div className='d-flex flex-row justify-content-center align-items-center'>
               <Instructions rowsCols={this.state.rowsCols} handleBoardSize={this.handleBoardSize} />
               <GameContainer rowsCols={this.state.rowsCols} handleClickCount={this.handleClickCount} clickCount={this.state.clickCount} boardUpdate={this.state.boardUpdate} decrementBoardUpdate={this.decrementBoardUpdate} />
             </div>
