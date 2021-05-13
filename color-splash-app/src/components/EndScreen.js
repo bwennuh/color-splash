@@ -5,7 +5,7 @@ class EndScreen extends Component {
   render(){
     return(
       <div>
-        <div className='game-over'>
+        <div className='game-over' style={{marginTop: '5%', marginBottom: '2%'}}>
             <span style={{color: "#6CC2BD"}}>G</span>
             <span style={{color: "#5A809E"}}>A</span>
             <span style={{color: "#1b4668"}}>M</span>

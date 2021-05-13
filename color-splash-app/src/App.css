@@ -101,6 +101,12 @@ span {
   background-color: white;
 }
 
+#high-score-list {
+  width: 40%;
+  margin: auto;
+  margin-top: 5%;
+}
+
 .score-info, .credit-info {
   font-size: 20pt;
   font-weight: bold;
