@@ -41,6 +41,13 @@
       "clickCount": 6,
       "finalColor": "",
       "id": 6
+    },
+    {
+      "playerName": "Bob",
+      "score": 0,
+      "clickCount": 0,
+      "finalColor": "",
+      "id": 7
     }
   ]
 }
