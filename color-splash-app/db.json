@@ -55,6 +55,13 @@
       "clickCount": 0,
       "finalColor": "",
       "id": 8
+    },
+    {
+      "playerName": "",
+      "score": 0,
+      "clickCount": 0,
+      "finalColor": "",
+      "id": 9
     }
   ]
 }

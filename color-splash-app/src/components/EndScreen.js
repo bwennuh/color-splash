@@ -6,14 +6,23 @@ class EndScreen extends Component {
     return(
       <div>
         <div className='game-over' style={{marginTop: '5%', marginBottom: '2%'}}>
-            <span style={{color: "#6CC2BD"}}>G</span>
+            {/* <span style={{color: "#6CC2BD"}}>G</span>
             <span style={{color: "#5A809E"}}>A</span>
             <span style={{color: "#1b4668"}}>M</span>
             <span style={{color: "#F57D7C"}}>E </span>
             <span style={{color: "#FFC1A6"}}>O</span>
             <span style={{color: "#6CC2BD"}}>V</span>
             <span style={{color: "#5A809E"}}>E</span>
-            <span style={{color: "#1b4668"}}>R</span>
+            <span style={{color: "#1b4668"}}>R</span> */}
+
+            <span id='color-splash'>G</span>
+            <span id='color-splash'>A</span>
+            <span id='color-splash'>M</span>
+            <span id='color-splash'>E </span>
+            <span id='color-splash'>O</span>
+            <span id='color-splash'>V</span>
+            <span id='color-splash'>E</span>
+            <span id='color-splash'>R</span>
           </div>
 
         <Link to='/color-splash'>
