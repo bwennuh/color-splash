@@ -63,7 +63,7 @@
   letter-spacing: 1px;
 }
 
-.splash-board, .navbar {
+.splash-board, .navbar, #high-score-list {
   font-size: 16pt;
   font-weight: bold;
   font-family: "Arial", sans-serif;
