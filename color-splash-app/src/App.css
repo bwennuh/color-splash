@@ -98,6 +98,7 @@ span {
   letter-spacing: 1px;
   color: #1b4668;
   padding: 10px;
+  background-color: white;
 }
 
 .score-info, .credit-info {
