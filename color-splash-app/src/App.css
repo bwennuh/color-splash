@@ -17,7 +17,7 @@
   color: #61dafb;
 }
 
-#color-splash {
+#color-splash, .game-over, .credits {
   font-size: 48pt;
   font-weight: 900;
   letter-spacing: 3px;
@@ -51,17 +51,17 @@ span {
   cursor: pointer;
 }
 
-#play-button:hover{
+#play-button:hover {
   background-position: right center; 
   color: white;
 }
 
 .rainbow-background {
   /* background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); */
-  background-image: linear-gradient(to left, #1b4668, #5A809E, #6CC2BD, #FEE4C4, #FFC1A6, #F57D7C)
+  background-image: linear-gradient(to left, #1b4668, #5A809E, #6CC2BD, #FEE4C4, #FFC1A6, #F57D7C);
 }
 
-.instruction-list{
+.instruction-list {
   text-align: left;
   font-size: 10pt;
   font-weight: bold;
@@ -90,4 +90,30 @@ span {
 
 .cover {
   z-index: -1
+}
+.splash-board, .navbar, #high-score-list, input {
+  font-size: 16pt;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+  color: #1b4668;
+  padding: 10px;
+}
+
+.score-info, .credit-info {
+  font-size: 20pt;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+  color: #1b4668;
+  padding: 10px;
+}
+
+.thanks, .names {
+  font-size: 30pt;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+  color: #1b4668;
+  padding: 10px;
 }

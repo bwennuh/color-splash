@@ -5,9 +5,8 @@ class GameContainer extends Component {
 
     render() {
         return (
-            <div style={{padding: '5%', backgroundColor: 'white'}}>
-                <h1>Splash the board!</h1>
-
+            <div style={{padding: '5%'}}>
+                <h2 className='splash-board' style={{fontSize: '16pt'}}>Splash the board!</h2>
                 <Game handleClickCount={this.props.handleClickCount} clickCount={this.props.clickCount} rowsCols={this.props.rowsCols} boardUpdate={this.props.boardUpdate} decrementBoardUpdate={this.props.decrementBoardUpdate} />
             </div>
         )

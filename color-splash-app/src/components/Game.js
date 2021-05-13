@@ -91,6 +91,7 @@ class Game extends Component {
 
       // Update splashPixels to include all pixels that have same color
       console.log(colorPalette.indexOf(hexNumber))
+      
       let copy = [...this.state.splashPixels]
       const colorIndex = colorPalette.indexOf(hexNumber)
       // if colorIndex (or splash color) equals current item, set same value in splashPixels
@@ -215,7 +216,7 @@ class Game extends Component {
         </div>
 
         <div id='click-count'>
-          <h3>You used {this.props.clickCount} turns </h3>
+          <h3 className='splash-board'>You have used {this.props.clickCount} turns </h3>
         </div>
 
         <Link to='/score'>
