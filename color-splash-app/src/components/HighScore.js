@@ -64,14 +64,15 @@ class HighScore extends Component {
   render(){
     return(
       <div>
-        <h1>HighScore</h1>
+        <h1 className='thanks'>Thanks for playing!</h1>
         <form onSubmit={this.submitHandler}>
-          <input onChange={(e) => this.setState({playerName: e.target.value})} type="text" placeholder="Enter a name"/>
+          <input onChange={(e) => this.setState({playerName: e.target.value})} type="text" placeholder="Enter your name"/>
+          <h3 className='score-info'>You used {this.props.clickCount} turns </h3>
+          <h3 className='score-info'>Your score is: {this.props.clickCount * 25}</h3>
           <button type='submit' id="play-button" className="rainbow-background">Submit Score</button>
-          <h3>You used {this.props.clickCount} turns </h3>
-
-          <h3>Your score is: {this.props.clickCount * 25}</h3>
         </form>
+        <br></br>
+        <br></br>
 
 
 

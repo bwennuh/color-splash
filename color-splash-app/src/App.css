@@ -17,7 +17,7 @@
   color: #61dafb;
 }
 
-#color-splash {
+#color-splash, .game-over, .credits {
   font-size: 48pt;
   font-weight: 900;
   letter-spacing: 3px;
@@ -52,7 +52,7 @@
 
 .rainbow-background {
   /* background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red); */
-  background-image: linear-gradient(to left, #1b4668, #5A809E, #6CC2BD, #FEE4C4, #FFC1A6, #F57D7C)
+  background-image: linear-gradient(to left, #1b4668, #5A809E, #6CC2BD, #FEE4C4, #FFC1A6, #F57D7C);
 }
 
 .instruction-list {
@@ -63,8 +63,26 @@
   letter-spacing: 1px;
 }
 
-.splash-board, .navbar, #high-score-list {
+.splash-board, .navbar, #high-score-list, input {
   font-size: 16pt;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+  color: #1b4668;
+  padding: 10px;
+}
+
+.score-info, .credit-info {
+  font-size: 20pt;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
+  letter-spacing: 1px;
+  color: #1b4668;
+  padding: 10px;
+}
+
+.thanks, .names {
+  font-size: 30pt;
   font-weight: bold;
   font-family: "Arial", sans-serif;
   letter-spacing: 1px;

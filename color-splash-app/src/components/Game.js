@@ -91,6 +91,7 @@ class Game extends Component {
 
       // Update splashPixels to include all pixels that have same color
       console.log(colorPalette.indexOf(hexNumber))
+      
       let copy = [...this.state.splashPixels]
       const colorIndex = colorPalette.indexOf(hexNumber)
       // if colorIndex (or splash color) equals current item, set same value in splashPixels
