@@ -215,7 +215,7 @@ class Game extends Component {
         </div>
 
         <div id='click-count'>
-          <h3>You used {this.props.clickCount} turns </h3>
+          <h3 className='splash-board'>You have used {this.props.clickCount} turns </h3>
         </div>
 
         <Link to='/score'>
