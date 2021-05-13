@@ -6,13 +6,13 @@ class Credits extends Component {
     return(
       <div>
         <h1 className='credits'>
-          <span style={{color: "#6CC2BD"}}>C</span>
-          <span style={{color: "#5A809E"}}>R</span>
-          <span style={{color: "#1b4668"}}>E</span>
-          <span style={{color: "#F57D7C"}}>D</span>
-          <span style={{color: "#FFC1A6"}}>I</span>
-          <span style={{color: "#6CC2BD"}}>T</span>
-          <span style={{color: "#5A809E"}}>S</span>
+          <span>C</span>
+          <span>R</span>
+          <span>E</span>
+          <span>D</span>
+          <span>I</span>
+          <span>T</span>
+          <span>S</span>
         </h1>
 
         <div id='credits'>

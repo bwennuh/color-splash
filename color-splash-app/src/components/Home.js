@@ -45,7 +45,7 @@ class Home extends Component {
       <div className="d-flex flex-column" style={{zIndex: '2', height: '100%', paddingTop: '8%'}}>
         <div id="home">
           <div id="color-splash" >
-            <span style={{color: "#6CC2BD"}}>C</span>
+            {/* <span style={{color: "#6CC2BD"}}>C</span>
             <span style={{color: "#5A809E"}}>O</span>
             <span style={{color: "#1b4668"}}>L</span>
             <span style={{color: "#F57D7C"}}>O</span>
@@ -55,7 +55,19 @@ class Home extends Component {
             <span style={{color: "#F57D7C"}}>L</span>
             <span style={{color: "#6CC2BD"}}>A</span>
             <span style={{color: "#1b4668"}}>S</span>
-            <span style={{color: "#5A809E"}}>H</span>
+            <span style={{color: "#5A809E"}}>H</span> */}
+
+            <span id='color-splash'>C</span>
+            <span id='color-splash'>O</span>
+            <span id='color-splash'>L</span>
+            <span id='color-splash'>O</span>
+            <span id='color-splash'>R </span>
+            <span id='color-splash'>S</span>
+            <span id='color-splash'>P</span>
+            <span id='color-splash'>L</span>
+            <span id='color-splash'>A</span>
+            <span id='color-splash'>S</span>
+            <span id='color-splash'>H</span>
           </div>
           <Link to='/color-splash'>
             <button id="play-button" className="rainbow-background">Click to Play</button>
