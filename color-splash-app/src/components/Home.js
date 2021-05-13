@@ -42,7 +42,7 @@ class Home extends Component {
 
   render(){
     return(
-      <div>
+      <div style={{zIndex: '2'}}>
         <div id="home">
           <div id="color-splash">
             <span style={{color: "#6CC2BD"}}>C</span>
