@@ -21,7 +21,7 @@ class Instructions extends Component {
           </select>
         </div>
 
-        <div className="instruction-list" style={{padding: '50px', backgroundColor: "white"}}>
+        <div className="instruction-list border border-4 border-dark" style={{padding: '50px', backgroundColor: "white"}}>
           <h3><span style={{color: "#5A809E"}}>Game Play Instructions:</span></h3>
           <ol>
             <li>

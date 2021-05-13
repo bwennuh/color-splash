@@ -42,7 +42,7 @@ class Home extends Component {
 
   render(){
     return(
-      <div style={{zIndex: '2'}}>
+      <div className="d-flex flex-column" style={{zIndex: '2', height: '100%', paddingTop: '8%'}}>
         <div id="home">
           <div id="color-splash" >
             <span style={{color: "#6CC2BD"}}>C</span>

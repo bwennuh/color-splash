@@ -63,15 +63,14 @@ class HighScore extends Component {
 
   render(){
     return(
-      <div>
-        <h1 className='thanks'>Thanks for playing!</h1>
+      <div className="d-flex flex-column">
+        <h1 className='thanks' style={{backgroundColor: 'white', width: '50%', margin: 'auto', marginTop: '5%', marginBottom: '2%'}}>Thanks for playing!</h1>
         <form onSubmit={this.submitHandler}>
           <input onChange={(e) => this.setState({playerName: e.target.value})} type="text" placeholder="Enter your name"/>
-          <h3 className='score-info'>You used {this.props.clickCount} turns </h3>
-          <h3 className='score-info'>Your score is: {this.props.clickCount * 25}</h3>
+          <h3 className='score-info' style={{backgroundColor: 'white', width: '30%', margin: 'auto', marginTop: '2%'}}>You used {this.props.clickCount} turns </h3>
+          <h3 className='score-info' style={{backgroundColor: 'white', width: '30%', margin: 'auto', marginBottom: '2%'}}>Your score is: {this.props.clickCount * 25}</h3>
           <button type='submit' id="play-button" className="rainbow-background">Submit Score</button>
         </form>
-        <br></br>
         <br></br>
 
 
