@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import '../App.css';
 
+// const pokemon = require("../public/Lo_Mimieux-Bo.mp3");
+// import LoMimieux from '../public/Lo_Mimieux-Bo.mp3'
+
 const BASE_URL = 'http://localhost:3001/highscores'
+// const objectURL = URL.createObjectURL('LoMimieuxBo.mp3')
 
 class Home extends Component {
 
   state = {
-    highscores: []
+    highscores: [],
   }
   
   componentDidMount() {
@@ -24,16 +28,7 @@ class Home extends Component {
     let allScores = this.state.highscores.map((score) => [score.playerName, score.score])
     // console.log(allScores)
 
-    allScores.sort((score1, score2) => (
-      score1[1]-score2[1]
-      // if (score1.score < score2.score){
-      //   return -1
-      // } else if (score1.score > score2.score){
-      //   return 1
-      // } else {
-      //   return 0
-      // }
-    ))
+    allScores.sort((score1, score2) => (score1[1]-score2[1]))
 
     const topThreeScores = allScores.slice(0,3)
     // console.log(topThreeScores)
@@ -41,33 +36,22 @@ class Home extends Component {
   }
 
   render(){
+    const src='LoMimieuxBo.mp3'
     return(
       <div className="d-flex flex-column" style={{zIndex: '2', height: '100%', paddingTop: '8%'}}>
         <div id="home">
           <div id="color-splash" >
-            {/* <span style={{color: "#6CC2BD"}}>C</span>
-            <span style={{color: "#5A809E"}}>O</span>
-            <span style={{color: "#1b4668"}}>L</span>
-            <span style={{color: "#F57D7C"}}>O</span>
-            <span style={{color: "#FFC1A6"}}>R </span>
-            <span style={{color: "#6CC2BD"}}>S</span>
-            <span style={{color: "#FFC1A6"}}>P</span>
-            <span style={{color: "#F57D7C"}}>L</span>
-            <span style={{color: "#6CC2BD"}}>A</span>
-            <span style={{color: "#1b4668"}}>S</span>
-            <span style={{color: "#5A809E"}}>H</span> */}
-
-            <span id='color-splash'>C</span>
-            <span id='color-splash'>O</span>
-            <span id='color-splash'>L</span>
-            <span id='color-splash'>O</span>
-            <span id='color-splash'>R </span>
-            <span id='color-splash'>S</span>
-            <span id='color-splash'>P</span>
-            <span id='color-splash'>L</span>
-            <span id='color-splash'>A</span>
-            <span id='color-splash'>S</span>
-            <span id='color-splash'>H</span>
+            <span key={0} id='color-splash'>C</span>
+            <span key={1} id='color-splash'>O</span>
+            <span key={2} id='color-splash'>L</span>
+            <span key={3} id='color-splash'>O</span>
+            <span key={4} id='color-splash'>R </span>
+            <span key={5} id='color-splash'>S</span>
+            <span key={6} id='color-splash'>P</span>
+            <span key={7} id='color-splash'>L</span>
+            <span key={8} id='color-splash'>A</span>
+            <span key={9} id='color-splash'>S</span>
+            <span key={10} id='color-splash'>H</span>
           </div>
           <Link to='/color-splash'>
             <button id="play-button" className="rainbow-background">Click to Play</button>
