@@ -10,8 +10,6 @@ import Credits from '../components/Credits.js'
 import Navbar from '../components/Navbar.js'
 import PixelBG from '../components/PixelBG.js';
 
-
-const BASE_URL = 'http://localhost:3000'
 const colorPalette = ['#6CC2BD', '#1b4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
 
 class MainContainer extends Component {
@@ -22,15 +20,6 @@ class MainContainer extends Component {
     rowsCols: 4,
     boardUpdate: 0
   }
-
-  // handleScoreSubmit = (event) => {
-  //   event.preventDefault()
-  //   const input = event.target.children[0]
-  //   // User's nickname
-  //   console.log(input.value)
-  //   // Reset field
-  //   input.value = ""
-  // }
 
   handleClickCount = () => {
     let clicks = this.state.clickCount
@@ -92,8 +81,7 @@ class MainContainer extends Component {
 
   createPixelBG = () => {
     // create color map!
-
-    // initialize array
+    //    initialize array
     const size = 12
     let pixelColorNumbers = Array(size).fill().map((element,index)=> {
       return Array(size).fill()
@@ -103,12 +91,9 @@ class MainContainer extends Component {
       pixelColorNumbers[index][idx] = this.getRandomInt(0,6)
     }))
 
-    // pixelColorNumbers.map((item,index)=> Array(7).fill().map((item2,index2)=> <PixelBG color={colorPalette[pixelColorNumbers[index2][index]]}/> )) 
-
     // display color map
     let initialArray = Array(size).fill().map((element,index)=> size-index-1 )  // [3,2,1,0]
     const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>{this.generateRow(row,size,pixelColorNumbers)}</div>)
-    console.log(matrix)
     return matrix
 
   }
