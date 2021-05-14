@@ -22,46 +22,32 @@
       "finalColor": "yellow"
     },
     {
-      "playerName": "Brenna",
-      "score": 150,
-      "clickCount": 6,
-      "finalColor": "",
-      "id": 4
+      "id": 4,
+      "playerName": "Vincent Van Gogh",
+      "score": 75,
+      "clickCount": 28,
+      "finalColor": "yellow"
     },
     {
-      "playerName": "James",
-      "score": 150,
-      "clickCount": 6,
-      "finalColor": "",
-      "id": 5
+      "id": 5,
+      "playerName": "Pablo Picasso",
+      "score": 50,
+      "clickCount": 28,
+      "finalColor": "yellow"
     },
     {
-      "playerName": "Test",
-      "score": 150,
-      "clickCount": 6,
-      "finalColor": "",
-      "id": 6
+      "id": 6,
+      "playerName": "Leonardo Da Vinci",
+      "score": 60,
+      "clickCount": 28,
+      "finalColor": "yellow"
     },
     {
-      "playerName": "Bob",
-      "score": 0,
-      "clickCount": 0,
-      "finalColor": "",
-      "id": 7
-    },
-    {
-      "playerName": "",
-      "score": 0,
-      "clickCount": 0,
-      "finalColor": "",
-      "id": 8
-    },
-    {
-      "playerName": "",
-      "score": 0,
-      "clickCount": 0,
-      "finalColor": "",
-      "id": 9
+      "id": 7,
+      "playerName": "Michelangelo",
+      "score": 80,
+      "clickCount": 28,
+      "finalColor": "yellow"
     }
   ]
 }
