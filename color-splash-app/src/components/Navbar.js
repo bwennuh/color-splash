@@ -4,13 +4,16 @@ import ReactLoading from "react-loading";
 export default class Navbar extends Component {
 
   state = {
-    audio: new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
+    audio: new Audio('https://github.com/bwennuh/color-splash/blob/main/color-splash-app/src/components/LoMimieuxBo.mp3?raw=true'),
     playing: false
   }
 
   playSound = (url) => {
-    this.state.audio.play()
+    const a = this.state.audio
+    a.play()
     this.setState({playing: true})
+    // a.src = 'http://127.0.0.1:8887/LoMimieuxBo.mp3'
+    console.log(a.src)
   }
 
   muteSound = () => {

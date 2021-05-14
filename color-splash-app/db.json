@@ -48,6 +48,13 @@
       "score": 80,
       "clickCount": 28,
       "finalColor": "yellow"
+    },
+    {
+      "playerName": "DidWeMakeIt",
+      "score": 175,
+      "clickCount": 7,
+      "finalColor": "",
+      "id": 8
     }
-   ]
- }
+  ]
+}
