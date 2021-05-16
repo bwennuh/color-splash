@@ -55,6 +55,20 @@
       "clickCount": 7,
       "finalColor": "",
       "id": 8
+    },
+    {
+      "playerName": "Flatiron Student",
+      "score": 150,
+      "clickCount": 6,
+      "finalColor": "",
+      "id": 9
+    },
+    {
+      "playerName": "Flatiron Student",
+      "score": 0,
+      "clickCount": 0,
+      "finalColor": "",
+      "id": 10
     }
   ]
 }
