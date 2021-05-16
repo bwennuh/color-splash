@@ -11,6 +11,7 @@ import Navbar from '../components/Navbar.js'
 import PixelBG from '../components/PixelBG.js';
 
 const colorPalette = ['#6CC2BD', '#1b4668', '#5A809E', '#F57D7C', '#FFC1A6', '#FEE4C4']
+const initMap = [[5,0,1,4,0,1,5,2,2,3,2,5],[0,3,2,5,5,3,1,3,4,0,3,3],[1,4,1,0,1,5,5,4,1,4,5,3],[3,5,3,3,4,0,1,3,4,2,5,3],[1,5,4,0,1,3,5,2,3,1,4,5],[2,5,2,5,5,1,2,0,5,3,4,5],[2,3,5,0,4,2,3,5,0,4,4,1],[3,4,3,4,1,5,0,1,2,5,2,2],[3,1,3,2,0,2,5,5,1,4,3,1],[4,5,5,2,5,0,1,3,0,4,4,4],[4,0,1,2,4,0,0,0,0,2,0,3],[4,2,5,3,0,1,0,5,4,1,0,0]]
 
 class MainContainer extends Component {
 
@@ -18,7 +19,11 @@ class MainContainer extends Component {
     clickCount: 0,
     score: 0,
     rowsCols: 4,
-    boardUpdate: 0
+    boardUpdate: 0,
+    intervalId: '',
+    testBG: '',
+    testJSX: initMap.map((row,r)=><div className='row'>{Array(12).fill().map((i,c)=> <div style={{width: '100px', height: '100px', padding: '0px', backgroundColor: colorPalette[initMap[r][c]]}} className="col text-dark border"></div>)}</div>),
+    value: <div>test</div>
   }
 
   handleClickCount = () => {
@@ -69,6 +74,7 @@ class MainContainer extends Component {
 
   generateRow = (rowNum,size,pCN) => {
     let initialArray = Array(size).fill().map((element,index)=>index)
+    // console.log(pCN)
     const row = initialArray.map((elem, idx) => {
       return <PixelBG key={idx+", "+rowNum}
                     id={idx+", "+rowNum}
@@ -77,6 +83,30 @@ class MainContainer extends Component {
                     color={colorPalette[pCN[rowNum][idx]]}/>
     })
     return row
+  }
+
+  createColorMap = () => {
+    // create color map!
+    //    initialize array
+    const size = 12
+    let pixelColorNumbers = Array(size).fill().map((element,index)=> {
+      return Array(size).fill()
+    })
+    // set color values to array
+    pixelColorNumbers.map((item,idx) => item.map((elem,index)=> {
+      pixelColorNumbers[index][idx] = this.getRandomInt(0,6)
+    }))
+    return pixelColorNumbers
+
+  }
+
+  displayColorMap = (colorMap) => {
+    // display color map
+    const size = 12
+    let initialArray = Array(size).fill().map((element,index)=> size-index-1 )  // [3,2,1,0]
+    const matrix = initialArray.map(row => <div key={initialArray.indexOf(row)} className='row'>{this.generateRow(row,size,colorMap)}</div>)
+    return matrix
+
   }
 
   createPixelBG = () => {
@@ -98,8 +128,25 @@ class MainContainer extends Component {
 
   }
 
+  interval = (colorMap) => {
+    const int = colorMap.map((row,index) => <div key={index} className='row'>{row.map((column,index2) => {
+      return <PixelBG key={index2+", "+index}
+                id={index2+", "+index}
+                color={colorPalette[colorMap[index][index2]]}/>
+    })}</div>)
+    return int
+  }
+
   componentDidMount() {
-    this.createPixelBG()
+    let intervalId = setInterval(()=> {
+      const map = this.createColorMap()                                        
+      this.setState({testBG: map, testJSX: map.map((row,r)=><div className='row'>{Array(12).fill().map((i,c)=> <div style={{width: '100px', height: '100px', padding: '0px', backgroundColor: colorPalette[map[r][c]]}} className="col text-dark border"></div>)}</div>)})
+    }, 2000)
+    this.setState({intervalId})
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.intervalId)
   }
 
   render(){
@@ -134,7 +181,11 @@ class MainContainer extends Component {
         </div>
 
         <div className='d-flex flex-column justify-content-center  cover box2' style={{margin: '0'}} >
-          {this.createPixelBG()}
+          {/* <div>{this.state.testBG}</div> */}
+          <div>{this.state.testJSX}</div>
+          {/* {console.log(this.state.testJSX)} */}
+          {/* <div id='BG'>{this.state.testJSX}</div> */}
+          {/* {this.state.testBG.length !== undefined? this.interval(this.state.testBG) : console.log('do nothing')} */}
         </div>
       </div>
     )
