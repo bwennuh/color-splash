@@ -138,11 +138,11 @@ class MainContainer extends Component {
   }
 
   componentDidMount() {
-    let intervalId = setInterval(()=> {
-      const map = this.createColorMap()                                        
-      this.setState({testBG: map, testJSX: map.map((row,r)=><div className='row'>{Array(12).fill().map((i,c)=> <div style={{width: '100px', height: '100px', padding: '0px', backgroundColor: colorPalette[map[r][c]]}} className="col text-dark border"></div>)}</div>)})
-    }, 2000)
-    this.setState({intervalId})
+    // let intervalId = setInterval(()=> {
+    //   const map = this.createColorMap()                                        
+    //   this.setState({testBG: map, testJSX: map.map((row,r)=><div className='row'>{Array(12).fill().map((i,c)=> <div style={{width: '100px', height: '100px', padding: '0px', backgroundColor: colorPalette[map[r][c]]}} className="col text-dark border"></div>)}</div>)})
+    // }, 2000)
+    // this.setState({intervalId})
   }
 
   componentWillUnmount() {

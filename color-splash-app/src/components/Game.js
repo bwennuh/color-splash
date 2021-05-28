@@ -81,28 +81,97 @@ class Game extends Component {
 
       this.props.handleClickCount()
 
+      // old method
+      {
+        // // Set 0,0 color to selected color
+      // const hexNumber = this.getHexColor(event)
+      // // Origin block is being changed in Pixel
+
+      // // Update the splash color state to be equal to the selected color
+      // this.setState({splashColor: hexNumber})
+
+      // // Update splashPixels to include all pixels that have same color
+      // let copy = [...this.state.splashPixels]
+      // const colorIndex = colorPalette.indexOf(hexNumber)
+      // // if colorIndex (or splash color) equals current item, set same value in splashPixels
+      // this.state.pixelColorNumbers.map((item,index) => item.map((item2,index2)=> {
+      //   // if equal
+      //   item2 === colorIndex? copy[index][index2] = true : console.log()
+      //   // set value
+      // }))
+      // this.setState({splashPixels: copy})
+    }
+      
+      // new method
       // Set 0,0 color to selected color
-      // console.log('clicked')
       const hexNumber = this.getHexColor(event)
       // Origin block is being changed in Pixel
 
-      // Update the splash color state to be equal to the selected color
+       // Update the splash color state to be equal to the selected color
       this.setState({splashColor: hexNumber})
 
-      // Update splashPixels to include all pixels that have same color
-      console.log(colorPalette.indexOf(hexNumber))
+      // update the true/false values
+      // keeping doing below until no neighbors have same color
+      //    if any surrounding block is false, go to next condition
+      //    check if neighbors are same color
       
       let copy = [...this.state.splashPixels]
+      const colorNumbers = this.state.pixelColorNumbers
       const colorIndex = colorPalette.indexOf(hexNumber)
-      // if colorIndex (or splash color) equals current item, set same value in splashPixels
-      this.state.pixelColorNumbers.map((item,index) => item.map((item2,index2)=> {
-        // if equal
-        item2 === colorIndex? copy[index][index2] = true : console.log()
-        // set value
-      }))
-      this.setState({splashPixels: copy})
 
-      // Update the color
+      // check whether neighbors are true or false
+      // debugger
+
+      // test do while loop
+      let fulfilled
+      do {
+        fulfilled = false
+
+        copy.map((item,index) => item.map((item2,index2) => {
+          const xPt = index2       // converting to (x,y)
+          const yPt = n-index-1
+          // console.log(index2+" "+index)
+        if(item2 === true) {          // if splashPixel pixel is true
+          // check up
+          if (yPt+1 <= n-1) {     // check y coord not out of bounds 
+            if(colorIndex == colorNumbers[n-(yPt+1)-1][xPt] && copy[n-(yPt+1)-1][xPt] == false) {     // check if up color matches colorIndex
+              console.log(xPt+', '+yPt) // if this outputs to console, this pixel is eligible to change its up color
+              copy[-(yPt+1)-1+n][xPt] = true
+              fulfilled = true
+            }
+          }
+          // check right
+          if (xPt+1 <= n-1) { // check x+ coord not out of bounds
+            if(colorIndex == colorNumbers[n-yPt-1][xPt+1] && copy[n-yPt-1][xPt+1] == false) {
+              console.log(xPt+', '+yPt)
+              copy[n-yPt-1][xPt+1] = true
+              fulfilled = true
+            }
+          }
+          // check bottom
+          if (yPt-1 >= 0) { // check y- coord not out of bounds
+            if(colorIndex == colorNumbers[n-(yPt-1)-1][xPt] && copy[n-(yPt-1)-1][xPt] == false) {
+              console.log(xPt+', '+yPt)
+              copy[n-(yPt-1)-1][xPt] = true
+              fulfilled = true
+            }
+          }
+          // check left
+          if (xPt-1 >= 0) { // check x- coord not out of bounds
+            if(colorIndex == colorNumbers[n-yPt-1][xPt-1] && copy[n-yPt-1][xPt-1] == false) {
+              console.log(xPt+', '+yPt)
+              copy[n-yPt-1][xPt-1] = true
+              fulfilled = true
+            }
+          }
+        }
+        }))
+
+      } while(fulfilled===true)
+
+      // debugger
+
+      // Update the color $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
       console.log(this.state.splashPixels)
       // map over splashPixels, if pixel is true, then change color to splash color
       this.state.splashPixels.map((item,index)=> item.map((item2,index2)=> {
