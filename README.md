@@ -1,6 +1,6 @@
 # Welcome to Color Splash!
 
-<img height="400" src="https://imgur.com/a/Ca4gMra"></img>
+<img height="400" src="https://imgur.com/YoPejqc"></img>
 
 ## About Color Splash
 
